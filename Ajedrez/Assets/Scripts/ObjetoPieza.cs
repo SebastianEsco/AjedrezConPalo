@@ -54,6 +54,7 @@ public class ObjetoPieza : MonoBehaviour
         {
             transform.position = new Vector2(peon.Mover()[0], peon.Mover()[1]);
             primerMovimiento = false;
+            movimiento = false;
             Desactivar();
         }
     }
