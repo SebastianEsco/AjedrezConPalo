@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class Pieza
 {
-    public float color;
+    public bool color;
     public int valor;
-    public float[] posicion = new float[2];
-    
+    public int[] posicion = new int[2];
 
 
-    public Pieza(float color, int valor, float fila, float columna)
+    public Pieza(bool color, int valor, int fila, int columna)
     {
         this.color = color;
         this.valor = valor;
@@ -18,9 +17,9 @@ public class Pieza
         posicion[1] = columna;
     }
 
-    public float[] IMover()
+    public void IMover()
     {
-        return posicion;
+
     }
 
     public void IComer()
