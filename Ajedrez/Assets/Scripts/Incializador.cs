@@ -38,7 +38,6 @@ public class Incializador : MonoBehaviour
 
     public int HabilitacionDeMovimientoVertical(Pieza pieza)
     {
-        Debug.Log("Entra");
 
         //BLANCAS AL LIMITE
         if(pieza.color == 1)
@@ -69,7 +68,6 @@ public class Incializador : MonoBehaviour
             {
                 if (pieza.posicion[1] + 1f == piezas[i].transform.position.y)
                 {
-                    Debug.Log(pieza.posicion[1] + 1 + " .... vs .... " + piezas[i].transform.position.y);
                     return 0;
                 }
             }
@@ -80,14 +78,74 @@ public class Incializador : MonoBehaviour
             {
                 if (pieza.posicion[1] + 2f == piezas[i].transform.position.y)
                 {
-                    Debug.Log(pieza.posicion[1]+ 1 + " .... vs .... " + piezas[i].transform.position.y);
                     return 1;
                 }
             }
         }
-        Debug.Log("retornando 2");
         return 2;
 
     }
 
+    public bool[] HabilitacionDeComerPeon(Pieza pieza)
+    {
+        bool[] comer = new bool[3]; //primero bool es si puede comer, segundo es si puede comer a la derecha, tercero a la izquierda
+        comer[0] = false; comer[1] = false; comer[2] = false;
+
+
+        for (int i = 0; i < 16; i++) //SOBRA LO DE PODER COMER, SE PUEDE CAMBIAR
+        {
+            if (piezas[i] != null)
+            {
+                if (pieza.posicion[1] + 1f == piezas[i].transform.position.y) //si está a una casilla de distancia hacia delante
+                {
+                    if(pieza.posicion[0] + 1f == piezas[i].transform.position.x) //si está a la derecha
+                    {
+                        if(pieza.color != scriptPieza[i].color) //si es del otro color
+                        {
+                            comer[0] = true; comer[1] = true;
+                            
+                        }
+
+                        if(pieza.posicion[0] - 1f == piezas[i].transform.position.x)
+                        {
+                            comer[2] = true;
+                        }
+                        
+                    }
+                    if (pieza.posicion[0] - 1f == piezas[i].transform.position.x)
+                    {
+                        if (pieza.color != scriptPieza[i].color) //si es del otro color
+                        {
+                            comer[2] = true; comer[0] = true;
+
+                        }
+                        
+                    }
+
+
+                }
+            }
+        }
+        return comer;
+    }
+
+    public void FichaComida(GameObject fichaQueCome)
+    {
+        for (int i = 0; i < 16; i++)
+        {
+            if (piezas[i] != null)
+            {
+                Debug.Log("Lo intenta");
+                Debug.Log(fichaQueCome.transform.position.x + " Vs " + piezas[i].transform.position.x);
+                if (fichaQueCome != piezas[i])
+                {
+                    if (fichaQueCome.transform.position == piezas[i].transform.position)
+                    {
+                        Destroy(piezas[i]);
+                    }
+                }
+                
+            }
+        }
+    }
 }

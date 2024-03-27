@@ -19,6 +19,25 @@ public class Peon : Pieza
 
     }
 
+    public float[] Comer(bool derecha) 
+    {
+        if (derecha)
+        {
+            posicion[0] += 1f * color;
+            posicion[1] += 0.5f * color;
+        }
+        else
+        {
+            posicion[0] -= 1f * color;
+            posicion[1] += 0.5f * color;
+        }
+        
+
+        return posicion;
+    }
+
+
+
     
 
 }
