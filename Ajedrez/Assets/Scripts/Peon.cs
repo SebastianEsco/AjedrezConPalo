@@ -4,18 +4,13 @@ using UnityEngine;
 
 public class Peon : Pieza
 {
-    public Peon(float color, int valor, float fila, float columna ) : base(color, valor, fila, columna)
+    public Peon(bool color, int valor, int fila, int columna ) : base(color, valor, fila, columna)
     {
 
     }
 
-    public float[] Mover()
+    public void IMover(int fila, int columna)
     {
-
-        posicion[1] += 0.5f * color;
-
-        return posicion;
-
 
     }
 
