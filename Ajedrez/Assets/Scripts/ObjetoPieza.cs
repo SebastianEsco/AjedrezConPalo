@@ -32,13 +32,11 @@ public class ObjetoPieza : MonoBehaviour
     private void OnMouseEnter()
     {
         encima = true;
-        Debug.Log("Ta encima");
     }
 
     private void OnMouseExit()
     {
         encima = false;
-        Debug.Log("No Ta encima");
     }
 
 
@@ -47,24 +45,27 @@ public class ObjetoPieza : MonoBehaviour
         guia1.SetActive(false);
         guia2.SetActive(false);
     }
-    // Update is called once per frame
-    void Update()
+    
+
+    public void MovimientoPeon(int cantidad)
     {
-        if(movimiento)
-        {
-            transform.position = new Vector2(peon.Mover()[0], peon.Mover()[1]);
-            primerMovimiento = false;
-            movimiento = false;
-            Desactivar();
-        }
+        transform.position = new Vector2(peon.Mover(cantidad)[0], peon.Mover(cantidad)[1]);
+        primerMovimiento = false;
+        Desactivar();
     }
 
     void Activar()
     {
-        if (primerMovimiento)
+        if (inicializador.HabilitacionDeMovimientoVertical(peon) == 1 || inicializador.HabilitacionDeMovimientoVertical(peon) == 2)
         {
+            guia1.SetActive(true);
+        }
+        if (inicializador.HabilitacionDeMovimientoVertical(peon) == 2 && primerMovimiento)
+        {
+            guia1.SetActive(true);
             guia2.SetActive(true);
         }
-        guia1.SetActive(true);
+        
+        
     }
 }

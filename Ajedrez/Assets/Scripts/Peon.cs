@@ -9,14 +9,16 @@ public class Peon : Pieza
 
     }
 
-    public float[] Mover()
+    public float[] Mover(int cantidad)
     {
 
-        posicion[1] += 0.5f * color;
+        posicion[1] += 0.5f * color * cantidad;
 
         return posicion;
 
 
     }
+
+    
 
 }

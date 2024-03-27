@@ -18,13 +18,14 @@ public class Pieza
         posicion[1] = columna;
     }
 
-    public float[] IMover()
+    public float[] Mover()
     {
         return posicion;
     }
 
-    public void IComer()
+    public void Comer()
     {
 
     }
+
 }
