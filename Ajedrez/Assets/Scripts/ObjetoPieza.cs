@@ -74,16 +74,18 @@ public class ObjetoPieza : MonoBehaviour
             guia2.SetActive(true);
         }
 
-        if (inicializador.HabilitacionDeComerPeon(peon)[2]) //izquierda
+        if (inicializador.HabilitacionDeComerPeon(peon)[0]) //Derecha
+        {
+            comerDerecha = true;
+            guia3.SetActive(true);
+        }
+
+        if (inicializador.HabilitacionDeComerPeon(peon)[1]) //izquierda
         {
             guia4.SetActive(true);
             comerIzquierda = true;
         }
-        if (inicializador.HabilitacionDeComerPeon(peon)[1]) //Derecha
-        {
-            comerDerecha= true;
-            guia3.SetActive(true);
-        }
+        
 
 
 
@@ -95,6 +97,7 @@ public class ObjetoPieza : MonoBehaviour
         {
             transform.position = new Vector2(peon.Comer(true)[0], peon.Comer(true)[1]); //comer a la derecha
             inicializador.FichaComida(Peon);
+            
             Desactivar();
         }
         else if(inicializador.HabilitacionDeComerPeon(peon)[2])

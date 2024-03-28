@@ -51,7 +51,7 @@ public class Incializador : MonoBehaviour
         }
 
         //NEGRAS AL LIMITE
-        if(pieza.color == 0 )
+        if(pieza.color == -1 )
         {
             if(pieza.posicion[1] == -3)
             {
@@ -62,7 +62,7 @@ public class Incializador : MonoBehaviour
         }
 
 
-        for (int i = 0; i < 16; i++)
+        for (int i = 0; i < 32; i++)
         {
             if (piezas[i] != null)
             {
@@ -72,7 +72,7 @@ public class Incializador : MonoBehaviour
                 }
             }
         }
-        for (int i = 0; i < 16; i++)
+        for (int i = 0; i < 32; i++)
         {
             if (piezas[i] != null)
             {
@@ -88,41 +88,27 @@ public class Incializador : MonoBehaviour
 
     public bool[] HabilitacionDeComerPeon(Pieza pieza)
     {
-        bool[] comer = new bool[3]; //primero bool es si puede comer, segundo es si puede comer a la derecha, tercero a la izquierda
-        comer[0] = false; comer[1] = false; comer[2] = false;
+        bool[] comer = new bool[2]; //[0] es si puede comer a la derecha y [1] a la izquierda
 
-
-        for (int i = 0; i < 16; i++) //SOBRA LO DE PODER COMER, SE PUEDE CAMBIAR
+        for (int i = 0; i < 32; i++) 
         {
             if (piezas[i] != null)
             {
                 if (pieza.posicion[1] + 1f == piezas[i].transform.position.y) //si está a una casilla de distancia hacia delante
                 {
-                    if(pieza.posicion[0] + 1f == piezas[i].transform.position.x) //si está a la derecha
+                    if (pieza.color != scriptPieza[i].color) //si es del otro color
                     {
-                        if(pieza.color != scriptPieza[i].color) //si es del otro color
+                        if (pieza.posicion[0] + 1f == piezas[i].transform.position.x) //si está a la derecha
                         {
-                            comer[0] = true; comer[1] = true;
-                            
+                            comer[0] = true;
                         }
 
-                        if(pieza.posicion[0] - 1f == piezas[i].transform.position.x)
+                        if (pieza.posicion[0] - 1f == piezas[i].transform.position.x)
                         {
-                            comer[2] = true;
+                            comer[1] = true; 
                         }
-                        
                     }
-                    if (pieza.posicion[0] - 1f == piezas[i].transform.position.x)
-                    {
-                        if (pieza.color != scriptPieza[i].color) //si es del otro color
-                        {
-                            comer[2] = true; comer[0] = true;
-
-                        }
-                        
-                    }
-
-
+                    
                 }
             }
         }
@@ -131,7 +117,7 @@ public class Incializador : MonoBehaviour
 
     public void FichaComida(GameObject fichaQueCome)
     {
-        for (int i = 0; i < 16; i++)
+        for (int i = 0; i < 32; i++)
         {
             if (piezas[i] != null)
             {
