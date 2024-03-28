@@ -38,11 +38,13 @@ public class ObjetoPieza : MonoBehaviour
     private void OnMouseEnter()
     {
         encima = true;
+        Debug.Log("Ta encima");
     }
 
     private void OnMouseExit()
     {
         encima = false;
+        Debug.Log("No Ta encima");
     }
 
 
@@ -53,26 +55,25 @@ public class ObjetoPieza : MonoBehaviour
         guia3.SetActive(false);
         guia4.SetActive(false);
     }
-    
-
-    public void MovimientoPeon(int cantidad)
+    // Update is called once per frame
+    void Update()
     {
-        transform.position = new Vector2(peon.Mover(cantidad)[0], peon.Mover(cantidad)[1]);
-        primerMovimiento = false;
-        Desactivar();
+        if(movimiento)
+        {
+            transform.position = new Vector2(peon.Mover()[0], peon.Mover()[1]);
+            primerMovimiento = false;
+            movimiento = false;
+            Desactivar();
+        }
     }
 
     void Activar()
     {
-        if (inicializador.HabilitacionDeMovimientoVertical(peon) == 1 || inicializador.HabilitacionDeMovimientoVertical(peon) == 2)
+        if (primerMovimiento)
         {
-            guia1.SetActive(true);
-        }
-        if (inicializador.HabilitacionDeMovimientoVertical(peon) == 2 && primerMovimiento)
-        {
-            guia1.SetActive(true);
             guia2.SetActive(true);
         }
+<<<<<<< HEAD
 
         if (inicializador.HabilitacionDeComerPeon(peon)[0]) //Derecha
         {
@@ -89,6 +90,9 @@ public class ObjetoPieza : MonoBehaviour
 
 
 
+=======
+        guia1.SetActive(true);
+>>>>>>> parent of b979e2a (Melo los movimientos de los peon, falta que coman)
     }
 
     public void Comer(bool derecha)

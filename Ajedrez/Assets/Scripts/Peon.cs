@@ -9,16 +9,17 @@ public class Peon : Pieza
 
     }
 
-    public float[] Mover(int cantidad)
+    public float[] Mover()
     {
 
-        posicion[1] += 0.5f * color * cantidad;
+        posicion[1] += 0.5f * color;
 
         return posicion;
 
 
     }
 
+<<<<<<< HEAD
     public float[] Comer(bool derecha) 
     {
         if (derecha)
@@ -40,4 +41,6 @@ public class Peon : Pieza
 
     
 
+=======
+>>>>>>> parent of b979e2a (Melo los movimientos de los peon, falta que coman)
 }

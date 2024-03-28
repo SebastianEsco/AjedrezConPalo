@@ -1,13 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using static Unity.Burst.Intrinsics.Arm;
 
 public class Incializador : MonoBehaviour
 {
-    public GameObject[] piezas = new GameObject[32];
-    ObjetoPieza[] scriptPieza = new ObjetoPieza[32];
+    public GameObject[] piezas = new GameObject[16];
+    ObjetoPieza[] scriptPieza = new ObjetoPieza[16];
 
     private void Start()
     {
@@ -36,6 +35,7 @@ public class Incializador : MonoBehaviour
         DesactivacionMasiva();
     }
 
+<<<<<<< HEAD
     public int HabilitacionDeMovimientoVertical(Pieza pieza)
     {
 
@@ -134,4 +134,6 @@ public class Incializador : MonoBehaviour
             }
         }
     }
+=======
+>>>>>>> parent of b979e2a (Melo los movimientos de los peon, falta que coman)
 }
