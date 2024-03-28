@@ -39,7 +39,6 @@ public class Incializador : MonoBehaviour
 
     public int HabilitacionDeMovimientoVertical(Pieza pieza)
     {
-        Debug.Log("Entra");
 
         //BLANCAS AL LIMITE
         if(pieza.color == 1)
@@ -92,7 +91,6 @@ public class Incializador : MonoBehaviour
                 }
             }
         }
-        Debug.Log("retornando 2");
         return 2;
 
     }
@@ -107,8 +105,7 @@ public class Incializador : MonoBehaviour
         {
             if (piezas[i] != null)
             {
-                Debug.Log(peon.posicion[1] + 1 + " .... vs .... " + piezas[i].transform.position.y);
-                Debug.Log(peon.posicion[0] + 1 + " .... vs .... " + piezas[i].transform.position.x);
+                
                 if (peon.posicion[0] + 1f == piezas[i].transform.position.x && peon.posicion[1] + 1f == piezas[i].transform.position.y)
                 { //Hay pieza arriba a la derecha
                     if (peon.color != scriptPieza[i].color)
@@ -130,6 +127,28 @@ public class Incializador : MonoBehaviour
         }
 
         return ladoAComer;
+    }
+
+    public void DestruirObjeto(Pieza piezaQueComio)
+    {
+        for (int i = 0; i < piezas.Length; i++)
+        {
+            if (piezas[i] != null)
+            {
+                Debug.Log("Holi");
+                if (piezaQueComio.color != scriptPieza[i].color)
+                {
+                    Debug.Log(piezaQueComio.posicion[0] + " .... Vs .... " + piezas[i].transform.position.x);
+                    Debug.Log(piezaQueComio.posicion[1] + " .... Vs .... " + piezas[i].transform.position.y);
+                    if (piezaQueComio.posicion[0] == piezas[i].transform.position.x && piezaQueComio.posicion[1] == piezas[i].transform.position.y)
+                    {
+                        Destroy(piezas[i]);
+                    }
+                }
+                
+            }
+
+        }
     }
 
 }

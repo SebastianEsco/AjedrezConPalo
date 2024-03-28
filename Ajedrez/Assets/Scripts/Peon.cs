@@ -12,7 +12,7 @@ public class Peon : Pieza
     public float[] Mover(int cantidad)
     {
 
-        posicion[1] += 0.5f * color * cantidad;
+        posicion[1] += 1 * color * cantidad;
 
 
         return posicion;
@@ -21,7 +21,7 @@ public class Peon : Pieza
     }
     public float[] Mover(bool derecha)
     {
-        posicion[1] += 0.5f * color; //Hacia adelante
+        posicion[1] += 1 * color; //Hacia adelante
 
         if (derecha)
         {

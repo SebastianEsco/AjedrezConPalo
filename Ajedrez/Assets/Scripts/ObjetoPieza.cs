@@ -53,17 +53,26 @@ public class ObjetoPieza : MonoBehaviour
 
     public void MovimientoPeon(int cantidad, bool[] comer)
     {
+        
+        
+        
+
         if (comer[0])
         {
-            transform.position = new Vector2(peon.Mover(true)[0], peon.Mover(true)[1]);
+            float[] movimientoDeComerDerecha = peon.Mover(true);
+            transform.position = new Vector2(movimientoDeComerDerecha[0], movimientoDeComerDerecha[1]);
+            inicializador.DestruirObjeto(peon);
         }
         else if (comer[1])
         {
-            transform.position = new Vector2(peon.Mover(false)[0], peon.Mover(false)[1]);
+            float[] movimientoDeComerIzquierda = peon.Mover(true);
+            transform.position = new Vector2(movimientoDeComerIzquierda[0], movimientoDeComerIzquierda[1]);
+            inicializador.DestruirObjeto(peon);
         }
         else
         {
-            transform.position = new Vector2(peon.Mover(cantidad)[0], peon.Mover(cantidad)[1]);
+            float[] movimiento = peon.Mover(cantidad);
+            transform.position = new Vector2(movimiento[0], movimiento[1]);
         }
         primerMovimiento = false;
         Desactivar();
