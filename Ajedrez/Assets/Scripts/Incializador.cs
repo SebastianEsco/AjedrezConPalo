@@ -67,7 +67,7 @@ public class Incializador : MonoBehaviour
         {
             if (piezas[i] != null)
             {
-                if (pieza.posicion[1] + 1f == piezas[i].transform.position.y)
+                if (pieza.posicion[1] + 1 == piezas[i].transform.position.y)
                 {
                     if(pieza.posicion[0] == piezas[i].transform.position.x)
                     {
