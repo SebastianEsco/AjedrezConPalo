@@ -14,11 +14,30 @@ public class Peon : Pieza
 
         posicion[1] += 0.5f * color * cantidad;
 
+
+        return posicion;
+
+
+    }
+    public float[] Mover(bool derecha)
+    {
+        posicion[1] += 0.5f * color; //Hacia adelante
+
+        if (derecha)
+        {
+            
+            posicion[0] += 1f * color; //A la derecha
+        }
+        else
+        {
+            posicion[0] -= 1f * color; //A la izquierda
+        }
+
+
         return posicion;
 
 
     }
 
-    
 
 }
